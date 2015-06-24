@@ -1,0 +1,131 @@
+#main{
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	width: 100%;
+}
+.wide td.backarrow{
+	width: 48px;
+	height: 72px;
+}
+.wide td.peoplename{
+	width: 144px;
+
+}
+.wide h1.peoplename{
+	white-space: nowrap;
+	width: 144px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.wide td.messageheader{
+	background-color: #2196F3;
+}
+.wide h1.messageheader{
+	margin-left: 24px;
+	color: #FFFFFF;
+}
+.wide td.imagecell{
+	height: 192px;
+}
+.wide img.backarrow,a.backarrow{
+	margin-left: auto;
+	margin-right: auto;
+}
+.wide a.backarrow{
+	opacity: 1;
+	transition: opacity 0.2s;
+}
+.wide a.backarrow:hover{
+	opacity: 0.5;
+}
+.wide a.backarrow:active{
+	opacity: 0.7;
+}
+.wide img.image{	
+	display: block;
+}
+.wide td.opings{
+	vertical-align: top;
+}
+.wide h2.opings{
+	margin-left: 24px;
+}
+.wide td.messagecell{	
+	background-color: rgba(0, 0, 0, 0.03);
+	vertical-align: top;
+}
+
+.wide #messagespace{
+
+	max-height: 480px;
+
+	overflow-y: auto; 
+
+}
+
+img.peoplephoto{
+			width: 36px;
+			height: 36px;
+			border-radius: 18px;
+			margin-left: 8px;
+			margin-right: 8px;
+		}
+
+#opings{
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	max-height: 160px;
+	overflow: auto;
+}
+
+cardlist span{
+
+	white-space: nowrap;
+	width: 100px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+	padding: 0;
+	margin: 12px;
+	margin-right: 0;
+}
+
+cardlist{
+	height: auto;
+	min-height: auto;
+}
+
+.wide img.send{
+	display: inline-block;
+	width: 32px;
+	vertical-align: middle;
+	opacity: 0.8;
+	transition: opacity 0.2s;
+}
+
+.wide img.send:hover{
+	opacity: 0.2;
+}
+
+.wide img.send:active{
+
+	opacity: 0.7;
+
+}
+
+.wide div.mbox{
+
+}	
+
+.wide div.messagecell{
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
+
+.wide #messagespace{
+	height: 90%;
+}

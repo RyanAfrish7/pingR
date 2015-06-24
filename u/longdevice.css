@@ -1,0 +1,123 @@
+#maindev{
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	width: 100%;
+}
+.long td.backarrow{
+	width: 48px;
+	height: 72px;
+}
+.long td.peoplename{
+	width: 144px;
+
+}
+.long h1.peoplename{
+	white-space: nowrap;
+	width: 144px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.long td.messageheader{
+	background-color: #2196F3;
+}
+.long h1.messageheader{
+	margin-left: 24px;
+	color: #FFFFFF;
+}
+.long td.imagecell{
+	background-color: #FFFFFF;
+}
+.long div.imagecell{
+	height: 200px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+.long img.backarrow,a.backarrow{
+	margin-left: auto;
+	margin-right: auto;
+}
+.long a.backarrow{
+	opacity: 1;
+	transition: opacity 0.2s;
+}
+.long a.backarrow:hover{
+	opacity: 0.5;
+}
+.long a.backarrow:active{
+	opacity: 0.7;
+}
+.long img.image{	
+	display: block;
+}
+.long div.photo{
+	display: block;
+	width: 100%;
+	height: 360px;
+}
+.long td.opings{
+}
+.long h2.opings{
+	margin-left: 24px;
+}
+.long td.messagecell{
+	box-shadow: 2px 1px 2px rgba(0, 0, 0, 0.2) inset;
+	background-color: rgba(0, 0, 0, 0.03);
+}
+
+.long #messagespace{
+
+	max-height: 87vh;
+
+	overflow-y: auto; 
+
+}
+
+input[type='text'].text{
+	
+	width: 81%;
+
+	height: 32px;
+
+	border: 1px solid #8A8A8A;
+
+	margin: 6px;
+
+	border-radius: 2px;
+
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05) inset;
+
+	padding-left: 10px;
+
+	transition: box-shadow 0.6s,  border;
+
+}
+
+input[type='text'].text:focus {
+
+	border: 1px solid #2196F3;
+
+	outline: 0px;
+
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) inset;
+
+	display: inline-block;
+
+	vertical-align: middle;
+}
+
+.long img.send{
+	display: inline-block;
+	width: 32px;
+	vertical-align: middle;
+	opacity: 0.4;
+	transition: opacity 0.6s;
+}
+
+.long img.send:active{
+
+	opacity: 0.7;
+
+}
