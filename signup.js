@@ -38,7 +38,6 @@ function createAccount(formX){
 			imageurl : 0,
 		}, function(data, status){
 			arr = data.split(" ");
-			alert(data);
 			switch(arr[0]){
 			case 'success':
 				$("#result").css("color","blue");
