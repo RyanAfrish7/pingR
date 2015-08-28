@@ -42,8 +42,6 @@ function getRecentPings($me)
 	$ids = explode(",",$me['recentpings']);
 	$in = join(',', array_fill(0, count($ids), '?'));
 
-	var_dump($ids);
-
 	// prepare and bind
 	if(!($stmt = $conn->prepare("SELECT userid,fname,lname,email,imageurl,activity FROM userlist WHERE userid IN ($in);")))
 		die("SQLPREP_FAILED ".$conn->error);
@@ -63,7 +61,6 @@ function getRecentPings($me)
 	{
 		array_push($pings,$row);
 	}
-
 
 	$stmt->close();
 	$conn->close();
