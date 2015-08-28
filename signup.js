@@ -38,6 +38,7 @@ function createAccount(formX){
 			imageurl : 0,
 		}, function(data, status){
 			arr = data.split(" ");
+			alert(data);
 			switch(arr[0]){
 			case 'success':
 				$("#result").css("color","blue");
@@ -62,7 +63,7 @@ function createAccount(formX){
 			default:
 				formX.password.value = formX.cpassword.value = "";
 				$("#result").css("color","red");
-				$("#result").text("Sorry, try again later."); alert(data);
+				$("#result").text("Sorry, try again later.");
 			}
 		});
 	}
