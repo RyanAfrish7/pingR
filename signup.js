@@ -62,7 +62,7 @@ function createAccount(formX){
 			default:
 				formX.password.value = formX.cpassword.value = "";
 				$("#result").css("color","red");
-				$("#result").text("Sorry, try again later.");
+				$("#result").text("Sorry, try again later."); alert(data);
 			}
 		});
 	}
