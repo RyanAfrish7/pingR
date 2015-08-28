@@ -4,6 +4,7 @@
 <head>
 	<title>pingR</title>
 	<?php include $_SERVER['DOCUMENT_ROOT']."/design/design";?>
+	<?php include $_SERVER['DOCUMENT_ROOT']."/offline";?>
 	<script src="https://apis.google.com/js/client:platform.js" async defer></script>
 	<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js"></script>
 	<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
@@ -70,7 +71,7 @@
 
 		<div id="defsignupwrapper" class="wrapper">
 		<h2>Sign up</h2>
-		<form method="POST" action="createaccounts.php" name="signupp" onsubmit="return createAccount(this);">
+		<form  method="POST" action="createaccounts.php" enctype="multipart/form-data" name="signupp" onsubmit="return createAccount(this);">
 		<label style="width:30%;display:inline-block;" for="fname">First name</label><input look="holo" style="width:60%" type="text" name="fname" id="fname" minlength=4 required><br />
 		<label style="width:30%;display:inline-block;" for="lname">Last name</label><input look="holo" style="width:60%" type="text" name="lname" id="lname" required><br />
 		<label style="width:30%;display:inline-block;" for="email">Email</label><input look="holo" style="width:60%" type="email" name="email" id="email" required><br />
@@ -78,6 +79,8 @@
 		<label style="width:30%;display:inline-block;" for="gender">Gender</label><select look="holo" name="gender" id="gender" required><option>Male</option><option>Female</option><option>Unspecified</option></select><br />
 		<label style="width:30%;display:inline-block;" for="password">Passphrase</label><input look="holo" style="width:60%" type="password" name="password" id="password" minlength=8 onchange="validatekey(this,document.getElementById('cpassword'));" required><br />
 		<label style="width:30%;display:inline-block;" for="cpassword">Confirm passphrase</label><input look="holo" style="width:60%" type="password" name="cpassword" id="cpassword" onchange="validatekey(document.getElementById('password'),this);" required><br />
+		<input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
+		<label style="width:30%;display:inline-block;" for="photo">Profile Picture</label><input type="file" look="none" name="photo" id="photo"><br />
 		<input type="submit" value="" style="width: 100%"><br />
 		</form>
 		</div>
@@ -99,6 +102,7 @@
 		<div id="div-pass"><label style="width:30%;display:inline-block;" for="xpassword">Passphrase</label><input look="holo" style="width:60%" type="password" name="xpassword" id="xpassword" minlength=8 onchange="validatekey(this,document.getElementById('xcpassword'));" required disabled><br /></div>
 		<div id="div-cpass"><label style="width:30%;display:inline-block;" for="xcpassword">Confirm passphrase</label><input look="holo" style="width:60%" type="password" name="xcpassword" id="xcpassword" onchange="validatekey(document.getElementById('xpassword'),this);" required disabled><br /></div>
 		<input type="submit" value="" style="width: 100%"><br />
+		<p id="xresult"></p>
 		</form>
 		</div>
 	</card>

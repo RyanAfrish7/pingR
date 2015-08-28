@@ -9,7 +9,7 @@
 	    die("Connection failed: " . $conn->connect_error);
 
 	// prepare and bind
-	if(!($stmt = $conn->prepare("SELECT userid,fname,lname,recentpings FROM userlist WHERE email=lower(?) AND password=?")))
+	if(!($stmt = $conn->prepare("SELECT userid,fname,lname,recentpings,imageurl FROM userlist WHERE email=lower(?) AND password=?")))
 		die("SQLPREP_FAILED ".$conn->error);
 	
 	$email = $_POST['email'];
@@ -21,15 +21,13 @@
 	if(!$stmt->execute())
 		die("EXEC_FAILED ".$stmt->error);
 
-	if(!$stmt->bind_result($uid, $fname, $lname, $recentpings))
+	if(!$stmt->bind_result($uid, $fname, $lname, $recentpings, $imageurl))
 		die("BINDRESULT_FAILED ".$stmt->error);
 
 	if(!$stmt->fetch())
 		die("NO_MATCH");
 	else 
 	{
-		echo "success";
-
 		$stmt->close();
 
 		if(!$conn->query("UPDATE userlist SET activity = '".date('Y-m-d H:i:s')."' WHERE userid = ".$uid.";"))
@@ -41,5 +39,8 @@
  	
 	session_start();
 
-	$_SESSION['me'] = array('userid' => $uid, 'fname' => $fname, 'lname' => $lname, 'id' => $uid, 'email' => $email, 'status' => 'OK', 'recentpings' => $recentpings);
+	$_SESSION['me'] = array('userid' => $uid, 'fname' => $fname, 'lname' => $lname, 'id' => $uid, 'email' => $email, 'status' => 'OK', 'recentpings' => $recentpings, 'imageurl' => $imageurl);
+
+	echo "success";
+
 ?>

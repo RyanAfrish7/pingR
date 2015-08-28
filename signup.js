@@ -60,6 +60,7 @@ function createAccount(formX){
 				break;
 
 			default:
+				alert(data);
 				formX.password.value = formX.cpassword.value = "";
 				$("#result").css("color","red");
 				$("#result").text("Sorry, try again later.");
@@ -97,6 +98,19 @@ function signinCallback(authResult) {
 	            $("#div-cpass").css("display","block");
 	            $("#xpassword").prop("disabled",false);
 	            $("#xcpassword").prop("disabled",false);
+
+	            if(resp.birthday == undefined)
+	            {
+	            	$("#div-bday").css("display","block");
+	            	$("#xbday").prop("disabled",false);
+	            }
+
+	            if(resp.gender == undefined)
+	            {
+	            	$("#div-gender").css("display","block");
+	            	$("#xgender").prop("disabled",false);
+	            }
+
 	            document.getElementById("cardx").classList.add("flip");
 	            window.setTimeout(function(){$("#cardfront").hide();$("#cardback").show();},800);
 
@@ -157,8 +171,8 @@ function finishproc(formX)
 			email : nemail,
 			password : hashstr,
 			key : formX.xpassword.value,
-			bday : guser_me.birthday,
-			gender : guser_me.gender,
+			bday : (guser_me.birthday==undefined) ? $("#xbday").text() : guser_me.birthday,
+			gender :  (guser_me.gender==undefined) ? $("#xgender").text() : guser_me.gender,
 			imageurl : guser_me.image.url,
         },function(data, status){
         	arr = data.split(" ");
@@ -183,6 +197,7 @@ function finishproc(formX)
 					$("#xresult").text("An Account with this Email has already been registered.");
 					break;
 				default:
+					alert(data);
 					$("#xresult").css("color","red");
 					$("#xresult").text("Sorry, try again later.");
 			}

@@ -1,13 +1,40 @@
 <?php
+	
+	$imgfile = $_POST['imageurl'];
+
+	if(isset($_FILES['photo']) && $_FILES['photo']['tmp_name']==none)
+	{
+		$uploaddir = '/userdata/';
+		$uploadfile = $uploaddir . md5($_POST['email']);
+		$uploadfileext =  ".tmp." . pathinfo($_FILES['photo']['tmp_name'], PATHINFO_EXTENSION);
+
+		if (move_uploaded_file($_FILES['photo']['tmp_name'], $uploadfile)) {
+			$im = new Imagick( $uploadfile . $uploadfileext);
+
+			$im->setCompression(Imagick::COMPRESSION_JPEG); 
+			$im->setCompressionQuality(60);
+			$im->setImageFormat('jpeg');
+
+			$im->resizeImage(192, 192, imagick::FILTER_LANCZOS, 1);
+
+			$im->writeImage($uploadfile."jpg"); 
+			$im->clear(); 
+			$im->destroy();
+
+			$imgfile = $uploadfile . "jpg";
+
+		} else {
+			// Possibly file upload attack
+		}
+	}
 
 	require $_SERVER['DOCUMENT_ROOT']."/key.php";
 
 	$conn = new mysqli($dbservername, $dbusername, $dbpassword, $dbname);
 
-
 	// Check connection
 	if ($conn->connect_error) {
-	    die("Connection failed: " . $conn->connect_error);
+		die("Connection failed: " . $conn->connect_error);
 	}
 
 	// prepare and bind
@@ -26,7 +53,7 @@
 	$bday = (isset($_POST['bday'])) ? $_POST['bday'] : '0000-00-00';
 	$gender = (isset($_POST['gender'])) ? $_POST['gender'] : 0;
 	$createddate = date('Y-m-d H:i:s');
-	$imageurl = ($_POST['imageurl']!=0) ? $_POST['imageurl'] : "/resources/noprofile.png";
+	$imageurl = ($imgfile!=0) ? $imgfile : "/resources/noprofile.png";
 	$activity = date('Y-m-d H:i:s');
 
 	if(!($stmt->execute()))

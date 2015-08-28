@@ -1,9 +1,20 @@
-<?php session_start(); if(isset($_SESSION['me'])) header("Location: /u/");?>
+<?php 
+if(isset($_GET['signout']))
+{
+	session_start();
+	session_destroy();
+	header('Refresh: 1.2	;url=/index.php');
+	die("Signing out...");
+}
+else
+	session_start(); if(isset($_SESSION['me'])) header("Location: /u/");
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>pingR</title>
 	<?php include $_SERVER['DOCUMENT_ROOT']."/design/design";?>
+	<?php include $_SERVER['DOCUMENT_ROOT']."/offline";?>
 	<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js"></script>
 	<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
 	<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/enc-base64-min.js"></script>
