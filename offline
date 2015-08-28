@@ -1,5 +1,0 @@
-<?php
-echo "\t<script src=\"\\aes.js\"></script>";
-echo "\t<script src=\"\\sha256.js\"></script>";
-echo "\t<script src=\"\\enc-base64-min.js\"></script>";
-?>
