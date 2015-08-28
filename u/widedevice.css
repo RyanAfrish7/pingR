@@ -5,6 +5,7 @@
 	padding: 0;
 	border: 0;
 	width: 100%;
+	min-height: 480px;
 }
 .wide td.backarrow{
 	width: 48px;
@@ -14,6 +15,7 @@
 	width: 144px;
 
 }
+
 .wide h1.peoplename{
 	white-space: nowrap;
 	width: 144px;
@@ -58,21 +60,17 @@
 	vertical-align: top;
 }
 
-.wide #messagespace{
-
-	max-height: 480px;
-
-	overflow-y: auto; 
-
-}
-
 img.peoplephoto{
-			width: 36px;
-			height: 36px;
-			border-radius: 18px;
-			margin-left: 8px;
-			margin-right: 8px;
-		}
+	width: 36px;
+	height: 36px;
+	border: 3px solid rgba(33, 150, 243,0);
+	border-radius: 20px;
+	margin-left: 8px;
+	margin-right: 8px;
+}
+img.peoplephoto.online{
+	border: 3px solid rgba(33, 150, 243,1);
+}
 
 #opings{
 	border-top: 1px solid rgba(0, 0, 0, 0.1);
@@ -126,6 +124,11 @@ cardlist{
 	height: 100%;
 }
 
-.wide #messagespace{
+.wide .messagespace{
 	height: 90%;
+	
+	max-height: 480px;
+
+	overflow-y: auto; 
+
 }

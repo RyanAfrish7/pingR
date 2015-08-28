@@ -16,6 +16,8 @@
 	<link rel="stylesheet" type="text/css" href="widedevice.css">
 	<link rel="stylesheet" type="text/css" href="longdevice.css">
 	<link rel="stylesheet" type="text/css" href="message.css">
+	<link rel="stylesheet" type="text/css" href="/cssoverride.css">
+	<script type="text/javascript" src="message.js.php?u=<?php echo $_GET['u']; ?>"></script>
 	<style type="text/css">
 		footer > span{
 			margin: 0 auto;
@@ -69,7 +71,7 @@
 	</style>
 </head>
 <body>
-	<header><h1>pingR</h1></header>
+	<header><h1>pingR</h1><div class="headercontrols"><span class="peoplename"></span><img class="profile" onmouseover="" onmouseout="" src="<?php echo $_SESSION['me']['imageurl'];?>"><a class="signout" href="/?signout">Sign out</a></div></header>
 	<space class="override">
 
 	<div class="wide">
@@ -78,15 +80,10 @@
 	<tbody>
 	<tr><td class="backarrow"><a class="backarrow" href="/u/"><img class="image backarrow" src="/resources/arrowleft.png"></a></td><td class="peoplename"><h1 class="peoplename"><?php echo $ping['fname']." ".$ping['lname'];?></h1></td><td rowspan="20" class="messagecell">
 	<div class="messagecell">
-	<div id="messagespace">
+	<div class="messagespace">
 
-	<div class="message">
-		<span class="people">Afrish Khan S</span>
-		<p class="message">Okay. </p>
-		<span class="time">21:00 pm</span>
 	</div>
-	</div>
-	<div class='mbox'><form method="POST" action="/na.php" onsubmit="return sendmessage(<?php ?>);"><input class="text" type="text" name="text" id="text"><img class="send" src="/resources/send.png" onclick=""></form></div>
+	<div class='mbox'><form method="POST" name="wideform" action="/na.php" onsubmit="return sendmessage(this);"><input class="text" type="text" name="text" id="text"><img class="send" src="/resources/send.png" onclick=""></form></div>
 	</div>
 
 	
@@ -95,18 +92,20 @@
 	<tr><td colspan="2" class="opings"><h2 class="opings">Other pings</h2><div id="opings">
 
 	<?php
-	
 	$pings = getRecentPings($_SESSION["me"]);
-
+	
 	foreach($pings as $user)
-		echo "\t<cardlist tabindex=0 onclick=\"window.location.href='message.php?u=".$user['userid']."';\"><img class='peoplephoto' src='".$user['imageurl']."' style='display:inline-block;vertical-align:middle;'><span>".$user['fname']." ".$user['lname']."</span></cardlist>\n";
-	?>
+	{
+		$t = new DateTime($user['activity']);
+		$x = new DateTime();
+		$diff = $x->diff($t); 	
+		$q = 0;
+		if($diff->y + $diff->m + $diff->d + $diff->h + $diff->i)
+		$q = 1;
 
-	<cardlist tabindex=0><img class="peoplephoto" src="test.jpg" style="display:inline-block;vertical-align:middle;"><span>Afrish Khan S</span></cardlist>
-	<cardlist tabindex=0><img class="peoplephoto" src="test1.jpg" style="display:inline-block;vertical-align:middle;"><span>Aryan</span></cardlist>
-	<cardlist tabindex=0><img class="peoplephoto" src="test2.png" style="display:inline-block;vertical-align:middle;"><span>Karthik</span></cardlist><cardlist tabindex=0><img class="peoplephoto" src="test.jpg" style="display:inline-block;vertical-align:middle;"><span>Afrish Khan S</span></cardlist>
-	<cardlist tabindex=0><img class="peoplephoto" src="test1.jpg" style="display:inline-block;vertical-align:middle;"><span>Aryan</span></cardlist>
-	<cardlist tabindex=0><img class="peoplephoto" src="test2.png" style="display:inline-block;vertical-align:middle;"><span>Karthik</span></cardlist>
+		echo "\t<cardlist tabindex=0 onclick=\"window.location.href='message.php?u=".$user['userid']."';\"><img class='peoplephoto ".( ($q) ? "offline" : "online" )."' src='".$user['imageurl']."' style='display:inline-block;vertical-align:middle;'><span>".$user['fname']." ".$user['lname']."</span></cardlist>\n";
+	}
+	?>
 	</div>
 	</td></tr>
 	</tbody>
@@ -122,19 +121,13 @@
 	<tr><td colspan="2" class="imagecell"><div class="imagecell"><div style="background: url('<?php echo $ping['imageurl'];?>'); background-repeat: no-repeat;background-size: cover;	" class="image photo"></div></div></td></tr>
 	<tr><td colspan="2" class="messageheader"><h1 class="messageheader">Pings</h1></td></tr>
 	<tr><td colspan="2" class="messagecell">
-	<div id="messagespace">
+	<div class="messagespace">
 	
-	<div class="message">
-		<span class="people">Afrish Khan S</span>
-		<p class="message">Okay. </p>
-		<span class="time">21:00 pm</span>
-	</div>
-
 	</div>
 	</td></tr>
 	</tbody>
 	</table>
-	<div style="border-top: 1px solid rgba(0, 0, 0, 0.2);"><input class="text" type="text" name="text" id="text"><img class="send" src="/resources/send.png" onclick=""></div>
+	<div style="border-top: 1px solid rgba(0, 0, 0, 0.2);"><form method="POST" name="longform" action="/na.php" onsubmit="return sendmessage(this);"><input class="text" type="text" name="text" id="text"><img class="send" src="/resources/send.png" onclick=""></form></div>
 	</card>
 	</div>
 

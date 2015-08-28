@@ -64,3 +64,31 @@ div.message span.time{
 	color: rgba(0, 0, 0, 0.5);
 
 }
+
+div.err{
+
+	color: white;
+
+	margin: 12px;
+
+	background-color: #2196F3;
+
+	padding: 12px;
+
+	box-shadow: 0px 2px 6px 10000px rgba(0, 0, 0, 0.8);
+
+	font-size: 16px;
+
+}
+
+div.info{
+
+	color: blue;
+
+	font-weight: bold;
+
+
+
+	font-size: 16px;
+
+}
