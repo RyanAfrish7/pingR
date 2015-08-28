@@ -48,9 +48,6 @@
 	foreach($pings as $user)
 		echo "\t<cardlist tabindex=0 onclick=\"window.location.href='message.php?u=".$user['userid']."';\"><img class='peoplephoto' src='".$user['imageurl']."' style='display:inline-block;vertical-align:middle;'><span>".$user['fname']." ".$user['lname']."</span></cardlist>\n";
 	?>
-	<cardlist tabindex=0><img class="peoplephoto" src="test.jpg" style="display:inline-block;vertical-align:middle;"><span>Afrish Khan S</span></cardlist>
-	<cardlist tabindex=0><img class="peoplephoto" src="test1.jpg" style="display:inline-block;vertical-align:middle;"><span>Aryan</span></cardlist>
-	<cardlist tabindex=0><img class="peoplephoto" src="test2.png" style="display:inline-block;vertical-align:middle;"><span>Karthik</span></cardlist>
 	</card>
 
 	<card class="nopadding">
