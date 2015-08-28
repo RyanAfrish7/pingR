@@ -14,7 +14,7 @@
 	if(!($stmt = $conn->prepare("INSERT INTO userlist (fname, lname, email, password, hashkey, birthday, gender, created, imageurl, activity) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")))
 		die("SQLPREP_FAILED ".$conn->error);
 	
-	if(!$stmt->bind_param("sssssssss", $fname, $lname, $email, $password, $hashkey, $bday, $gender, $createddate, $imageurl, $activity))
+	if(!$stmt->bind_param("ssssssssss", $fname, $lname, $email, $password, $hashkey, $bday, $gender, $createddate, $imageurl, $activity))
 		die("BINDPARAM_FAILED".$stmt->error);
 
 	// set parameters and execute
